@@ -1,0 +1,25 @@
+
+user_type
+-----------
+create table user_type(UserType_id varchar(30) NOT NULL PRIMARY KEY,Type varchar(30));
+
+User
+-------
+create table user (user_id INT AUTO_INCREMENT PRIMARY KEY,  FName varchar(25), LName varchar(25), Email varchar(50), Password varchar(25), UserType_id varchar(30), constraint fk_TypUsr FOREIGN KEY (UserType_id) references user_type(UserType_id), Address varchar(100),Phone Varchar(10))
+
+item
+----------
+create table item(item_id INT AUTO_INCREMENT PRIMARY KEY,ItemType varchar(30), ItemName varchar(40),ratepPerUnit int);
+
+Agent
+----------
+create table Agent(agent_id int AUTO_INCREMENT PRIMARY KEY, FName varchar(25),LName varchar(25))
+
+OrderHeader
+----------------------
+create table OrderHeader(order_id int AUTO_INCREMENT PRIMARY KEY, user_id int, DateOfCreation datetime,ScheduleDateOfpickup datetime,order_status int, agent_id int,constraint fk_OrderHeader_user foreign key (user_id) references user(user_id),constraint fk_OrderHeader_Agent foreign key (agent_id) references Agent(agent_id));
+
+OrderDetail
+----------------------
+create table OrderDetail(order_id int, item_id INT, quantity int,constraint fk_OrderDetail_OrderHeader foreign key (order_id) references OrderHeader(order_id),constraint fk_OrderDetail_item foreign key (item_id) references item(item_id));
+

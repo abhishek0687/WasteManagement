@@ -1,0 +1,19 @@
+{
+	"totalItems": "100",
+	"pendingItems": "20",
+	"walletBalance": "Rs 50",
+	"orderHistory": [{
+		"orderNo": "001",
+		"date": "08/04/2016"
+	}, {
+		"orderNo": "002",
+		"date": "09/04/2016"
+	}],
+	"timeline": [{
+		"key": "New Order Placed",
+		"value": "yesterday"
+	}, {
+		"key": "Pickup Confirmed",
+		"value": "2 hours ago"
+	}]
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta charset="utf-8"/>
+      <title>Waste Management</title>
+      
+      <!--[if lte IE 8]><script src="/javascripts//js/html5shiv.js"></script><![endif]-->
+		<script src="/javascripts/js/jquery.min.js"></script>
+		<script src="/javascripts/js/skel.min.js"></script>
+		<script src="/javascripts/js/skel-layers.min.js"></script>
+		<script src="/javascripts/js/init.js"></script>
+			<link rel="stylesheet" type="text/css" href="/stylesheets/css/skel.css" />
+			<link rel="stylesheet" type="text/css" href="/stylesheets/css/style.css" />
+			<link rel="stylesheet" type="text/css"  href="/stylesheets/css/style-xlarge.css" />
+      
+    <link rel="stylesheet" type="text/css" href="/stylesheets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="jquery-ui.css" />
+    <link rel="stylesheet" href="primeui.min.css" />
+    <script type="text/javascripts/" src="jquery-ui.js"></script>
+    <script type="text/javascripts/" src="primeui.min.js"></script>
+    
+    
+    <link href="/stylesheets/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+      <script>
+		$(document).ready(function(){
+			{{#each data}}
+			//	{{#if }}
+				var quantity = 
+				console.log("{{this.DateOfCreation}}");
+			{{/each}}
+				$.ajax({
+				  type: "GET",
+				  url: "response.json",
+				  success: function(data){
+					  	$("#totalItemsId").text(data.totalItems);
+						$("#pendingItemsId").text(data.pendingItems);
+						$("#walletBalanceId").text(data.walletBalance);
+						
+						$('#orderHistoryDiv').puidatatable({
+				            caption: 'Order History',
+				            paginator: {
+				                rows: 10
+				            },
+				            columns: [
+				                {field: 'orderNo', headerText: 'Order No.'},
+				                {field: 'date', headerText: 'Date'}
+				            ],
+				            datasource: data.orderHistory
+				        });
+				  }
+				});
+		});
+	</script>
+   </head>
+   <body class="landing">
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Waste Management</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="dashboard" active="true">DashBoard</a></li>
+						<li><a href="schedule.html" active="true">Schedule a Pickup</a></li>
+						<li><a href="signUp.html" class="button special">Register</a></li>
+					</ul>
+				</nav>
+			</header>
+			
+			<section id="banner" class="wrapper style1 special">
+				<div id="main">
+					<h2>Dash Board</h2>
+					
+			<div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge" id="totalItemsId"></div>
+                                    <div>Total Items Recycled</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge" id="pendingItemsId"></div>
+                                    <div>Pending Items to be Recycled</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge" id="walletBalanceId"></div>
+                                    <div>Wallet Balance</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+				</div>
+				
+				<div id="orderHistoryDiv" width="50%" style="align:left;float:left;"></div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<section class="links">
+						<div class="row">
+							<section class="3u 6u(medium) 12u$(small)">
+								<h3><a href="#">Home</a></h3>
+							</section>
+							<section class="3u 6u(medium) 12u$(small)">
+								<h3><a href="#">Corporate</a></h3>
+							</section>
+							<section class="3u 6u(medium) 12u$(small)">
+								<h3><a href="#">Industry</a></h3>
+							</section>
+							<section class="3u 6u$(medium) 12u$(small)">
+								<h3><a href="#">My Account</a></h3>
+							</section>
+						</div>
+					</section>
+					<div class="row">
+						<div class="8u 12u$(medium)">
+							<ul class="copyright">
+								<li>&copy; TeamRe. All rights reserved.</li>
+							</ul>
+						</div>
+						<div class="4u$ 12u$(medium)">
+							<ul class="icons">
+								<li>
+									<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+								</li>
+								<li>
+									<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+	</body>
+</html>
